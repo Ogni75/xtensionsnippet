@@ -1,0 +1,52 @@
+import OutputRedirector
+import XWF
+
+
+# The first function that is called when a Python X-Tension is called
+def XT_Init(nVersion, nFlags, hMainWnd, lpReserved):
+    OutputRedirector.install()
+
+
+# Called just before execution of the Python script concludes
+def XT_Done(lpReserved):
+    return 
+
+def XT_About(hParentWnd, lpReserved):
+    return
+
+def XT_Prepare(hVolume, hEvidence, nOpType, lpReserved):
+
+
+    return
+
+def XT_Finalize(hVolume, hEvidence, nOpType, lpReserved):
+    return
+
+def XT_ProcessSearchHit(iSize, nItemID, nRelOfs, nAbsOfs, lpOptionalHitPtr, lpSearchTermID, nLength, nCodePage, nFlags):
+    return
+
+def XT_ProcessItem(nItem, reserved):
+
+    return
+
+def XT_ProcessItemEx(nItem, hItem, reserved):
+    
+    adress=""
+    parentfoldername=""
+    filename = XWF.GetItemName(nItem)
+    parentfolder=XWF.GetItemParent(nItem)
+    adress=filename
+    while parentfoldername != "(Root directory)":
+    
+        parentfoldername = XWF.GetItemName(parentfolder)
+        adress=parentfoldername + "\\" + adress
+        parentfolder= XWF.GetItemParent(parentfolder)
+
+    print adress
+
+
+    return
+
+def XT_About(hParentWnd, lpReserved):
+    print('Skeleton Python script!')
+    return
